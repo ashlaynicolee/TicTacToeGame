@@ -113,30 +113,27 @@ public class TicTacToeModel{
       
       /* Return true if specified location is within grid bounds */
       
-      /* INSERT YOUR CODE HERE */
-   
-      return false; /* remove this line! */
+      if(row > 0 && col >0)
+      {
+         if (row < width && col < width)
+         {
+            return true;
+         }
+      }
+      return false;
       
    }
 	
    private boolean isSquareMarked(int row, int col) {
       
       /* Return true if square at specified location is marked */
-      
-      /* INSERT YOUR CODE HERE */
-   
-      return false; /* remove this line! */
-          
+      return grid[row][col] != Mark.EMPTY;
    }
 	
    public Mark getMark(int row, int col) {
       
       /* Return mark from the square at the specified location */
-      
-      /* INSERT YOUR CODE HERE */
-   
-      return null; /* remove this line! */
-          
+      return grid[row][col];
    }
 	
    public Result getResult() {
