@@ -141,31 +141,100 @@ public class TicTacToeModel{
       /* Use isMarkWin() to see if X or O is the winner, if the game is a
          tie, or if the game is not over, and return the corresponding Result
          value */
+     
+      if(isMarkWin(Mark.X))
+         return Result.X;
       
-      /* INSERT YOUR CODE HERE */
-   
-      return null; /* remove this line! */
-   
+      else if(isMarkWin(Mark.O))
+         return Result.O; 
+         
+      else if(isTie())
+         return Result.TIE;
+     
+      return Result.NONE;
    }
 	
    private boolean isMarkWin(Mark mark) {
       
       /* Check the squares of the board to see if the specified mark is the
          winner */
+         
+      if(checkRowsCols(mark))
+         return true;
       
-      /* INSERT YOUR CODE HERE */
+      if(checkDiagonal(mark))
+         return true;
+      
+      return false;
+   }
    
-      return false; /* remove this line! */
+   private boolean checkRowsCols(Mark mark)
+   {
+     /* Check each row and column for a specified mark, for the isMarkWin() method */
+     
+      int rows = 0;
+      int cols = 0;
+     
+      for(int i = 0; i < width; i++)
+      {
+         if(rows > 0)
+            rows = 0;
+       
+         if(cols > 0)
+            cols = 0;
+      
+         for(int j =0; i < width; j++)
+         {
+            if(grid[i][j] == mark)
+               rows++;
+               
+            if(grid[j][i] == mark)
+               cols++;
+               
+            if(rows == width || cols == width)
+               return true;
+         }
+      }
+      return false;
+   }
    
+   private boolean checkDiagonal(Mark mark)
+   {
+     /* Check each diagonal for a specified mark for the isMarkWin() method*/
+     
+      int d1 = 0;
+      int d2 = 0;
+     
+      for(int i = 0; i < width; i++)
+      {
+         if(grid[i][i] == mark)
+            d1++;
+       
+         if(grid[i][width-i-1] == mark)
+            d2++;
+       
+         if(d1 == width || d2 == width)
+            return true;
+      }
+     
+      return false;
+     
    }
 	
    private boolean isTie() {
       
       /* Check the squares of the board to see if the game is a tie */
    
-      /* INSERT YOUR CODE HERE */
+      for(int i = 0; i < width; i++)
+      {
+         for(int j = 0; j < width; j++)
+         {
+            if(grid[i][j] == Mark.EMPTY)
+               return false;
+         }
+      }
    
-      return false; /* remove this line! */
+      return true;
       
    }
 
