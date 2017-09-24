@@ -72,12 +72,12 @@ public class TicTacToeModel{
       xTurn = true;
       
       /* Create grid (width x width) as a 2D Mark array */
-      Mark[][] grid = new Mark[width][width];
+      grid = new Mark[width][width];
    
       /* Initialize grid by filling every square with empty marks */
-      for(int i =0; i < width; i++)
+      for(int i = 0; i < width; i++)
       {
-         for(int j =0; j < width; j++)
+         for(int j = 0; j < width; j++)
          {
             grid[i][j] = Mark.EMPTY;
          }
@@ -185,7 +185,7 @@ public class TicTacToeModel{
          if(cols > 0)
             cols = 0;
       
-         for(int j =0; i < width; j++)
+         for(int j = 0; j < width; j++)
          {
             if(grid[i][j] == mark)
                rows++;

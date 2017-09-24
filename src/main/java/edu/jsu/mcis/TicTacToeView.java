@@ -19,15 +19,15 @@ public class TicTacToeView {
       int c = 0;
       System.out.print(" ");
       
-      while(c <= model.getWidth() - 1)
+      while(c < model.getWidth())
       {
          System.out.print(c);
          c++; 
       }
       
-      System.out.println("\n\n\n");
+      System.out.println("\n\n");
       
-      for(int i = 0; i <= model.getWidth() - 1; i++)
+      for(int i = 0; i < model.getWidth(); i++)
       {
          System.out.print(i + " ");
         
@@ -48,12 +48,12 @@ public class TicTacToeView {
       if(model.isXTurn())
       {
          System.out.println("\n\n" + "Player 1 (X) Move:");
-         System.out.println("Enter the row and column numbers, separated by a space: ");
+         System.out.print("Enter the row and column numbers, separated by a space: ");
       }
       else
       {
          System.out.println("\n\n" + "Player 2 (O) Move:");
-         System.out.println("Enter the row and column numbers, separated by a space: ");
+         System.out.print("Enter the row and column numbers, separated by a space: ");
       }
    
    }
