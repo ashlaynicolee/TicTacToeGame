@@ -17,7 +17,7 @@ public class TicTacToeView {
       /* Print the board to the console (see examples) */
       
       int c = 0;
-      System.out.print(" ");
+      System.out.print("  ");
       
       while(c < model.getWidth())
       {
@@ -25,13 +25,13 @@ public class TicTacToeView {
          c++; 
       }
       
-      System.out.println("\n\n");
+      System.out.println("\n");
       
       for(int i = 0; i < model.getWidth(); i++)
       {
          System.out.print(i + " ");
         
-         for(int j = 0; j <= model.getWidth()-1; j++)
+         for(int j = 0; j < model.getWidth(); j++)
          {
             System.out.print(model.getMark(i,j));
          }
@@ -69,7 +69,7 @@ public class TicTacToeView {
    
       /* Display final winner */
    
-      System.out.println(r + "!");
+      System.out.println("\n" + r + "!");
    
    }
 	

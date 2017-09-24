@@ -115,7 +115,7 @@ public class TicTacToeModel{
       
       /* Return true if specified location is within grid bounds */
       
-      if(row > 0 && col >0)
+      if(row >= 0 && col >= 0)
       {
          if (row < width && col < width)
          {
@@ -129,7 +129,14 @@ public class TicTacToeModel{
    private boolean isSquareMarked(int row, int col) {
       
       /* Return true if square at specified location is marked */
-      return grid[row][col] != Mark.EMPTY;
+      if(grid[row][col] == Mark.EMPTY)
+      {
+         return false;
+      }
+      else
+      {
+         return true;
+      }
    }
 	
    public Mark getMark(int row, int col) {
