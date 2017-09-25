@@ -38,9 +38,9 @@ public class TicTacToeView extends JPanel implements ActionListener {
       {
          for(int j = 0; j < width; j++)
          {
-            JButton b = new JButton("Square "+ i + j);
+            JButton b = new JButton();
             b.setName("Square" + i + j);
-            b.setSize(64,64);
+            b.setPreferredSize(new Dimension(64,64));
             b.addActionListener(this);
             
             squares[i][j] = b;
