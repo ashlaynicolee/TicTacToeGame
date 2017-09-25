@@ -33,8 +33,21 @@ public class TicTacToeView extends JPanel implements ActionListener {
         preferred size to 64x64 pixels, and add the new square to the
         "squaresPanel" JPanel created earlier. */
         
-        /* INSERT CODE HERE */
-        
+      
+      for(int i = 0; i < width; i++)
+      {
+         for(int j = 0; j < width; j++)
+         {
+            JButton b = new JButton("Square"+ i +j);
+            b.setSize(64,64);
+            b.addActionListener(this);
+            
+            squares[i][j] = b;
+            
+            squaresPanel.add(b);
+         }
+      }
+   
       add(squaresPanel);
       add(resultLabel);
         
@@ -75,17 +88,18 @@ public class TicTacToeView extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         
       String name = ((JButton) event.getSource()).getName();
-        
+       
         /* Extract the ROW and COL from the string name (remember, the squares
            should all be named "SquareXY", so the ROW should be extracted from
            position 6 of this string, and the COL from position 7.  Remember to
            convert both to Integers!) */
-   
-        /* INSERT CODE HERE */
+             
+      int row = Integer.parseInt(name.substring(6,6));
+      int col = Integer.parseInt(name.substring(7,7));  
            
         /* Call makeMark() to place the mark in the Model */
         
-        /* INSERT CODE HERE */
+      model.makeMark(row,col);
    
         /* Update the squares of the View using the "updateSquares()" method
            (see below); this is the equivalent of re-printing the grid to the
@@ -102,8 +116,17 @@ public class TicTacToeView extends JPanel implements ActionListener {
            the View and disable them to prevent further entries.  (Hint: the
            JButton class provides a "setEnabled()" method for this.) */
            
-        /* INSERT CODE HERE */
-        
+      if(model.isGameover())
+      {
+         for(int i = 0; i < squares.length; i++)
+         {
+            for(int j = 0; j < squares.length; j++)
+            {
+               squares[i][j].setEnabled(false);
+            }
+         }
+      }
+            
    }
         
    public void updateSquares() {
@@ -112,7 +135,17 @@ public class TicTacToeView extends JPanel implements ActionListener {
            reset the button text to match the corresponding marks as returned
            by "getMark()" (to update the View to match the Model) */
            
-        /* INSERT CODE HERE */
+      for(int i = 0; i < squares.length; i++)
+      {
+         for(int j = 0; j < squares.length; j++)
+         {  
+            if(model.getMark(i,j).toString() == "X")
+               squares[i][j].setText("X");
+            else
+               squares[i][j].setText("O");
+         }
+      }
+   
    
    }
      
