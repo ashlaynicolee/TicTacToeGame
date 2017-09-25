@@ -38,7 +38,8 @@ public class TicTacToeView extends JPanel implements ActionListener {
       {
          for(int j = 0; j < width; j++)
          {
-            JButton b = new JButton("Square"+ i +j);
+            JButton b = new JButton("Square "+ i + j);
+            b.setName("Square" + i + j);
             b.setSize(64,64);
             b.addActionListener(this);
             
@@ -94,12 +95,15 @@ public class TicTacToeView extends JPanel implements ActionListener {
            position 6 of this string, and the COL from position 7.  Remember to
            convert both to Integers!) */
              
-      int row = Integer.parseInt(name.substring(6,6));
-      int col = Integer.parseInt(name.substring(7,7));  
+      String row = name.substring(6,7);
+      String col = name.substring(7,8);
+      
+      int r = Integer.parseInt(row);
+      int c = Integer.parseInt(col);  
            
         /* Call makeMark() to place the mark in the Model */
         
-      model.makeMark(row,col);
+      model.makeMark(r,c);
    
         /* Update the squares of the View using the "updateSquares()" method
            (see below); this is the equivalent of re-printing the grid to the
@@ -125,6 +129,7 @@ public class TicTacToeView extends JPanel implements ActionListener {
                squares[i][j].setEnabled(false);
             }
          }
+         showResult(model.getResult() + " !");
       }
             
    }
@@ -141,12 +146,10 @@ public class TicTacToeView extends JPanel implements ActionListener {
          {  
             if(model.getMark(i,j).toString() == "X")
                squares[i][j].setText("X");
-            else
+            else if(model.getMark(i,j).toString() == "O")
                squares[i][j].setText("O");
          }
       }
-   
-   
    }
      
    public void showNextMovePrompt() {
